@@ -1,5 +1,7 @@
 import re
 
+from youtube_transcript_api import YouTubeTranscriptApi
+
 
 def get_video_id(url: str) -> str | None:
     """Extracts a Youtube video's id from its url"""
@@ -10,3 +12,18 @@ def get_video_id(url: str) -> str | None:
         return match.group(1)
 
     return None
+
+
+def get_video_transcript(video_id: str):
+    """Gets the transcript of YouTube video from its id"""
+    return YouTubeTranscriptApi.get_transcript(video_id)
+
+
+def join_transcript(transcript: list) -> str:
+    full_text = ""
+
+    for element in transcript:
+        for k, v in element.items():
+            full_text += v
+
+    return full_text
