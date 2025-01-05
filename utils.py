@@ -26,4 +26,5 @@ def join_transcript(transcript: list) -> str:
         for key, val in element.items():
             if key == "text":
                 full_text += f" {val}"
+
     return full_text
