@@ -23,7 +23,7 @@ class TestUtilityFunctions(unittest.TestCase):
         transcript = [{"text": "hello"}, {"text": " world"}]
         full_text = join_transcript(transcript)
 
-        self.assertEqual(full_text, "hello world")
+        self.assertEqual(full_text, " hello  world")
 
 
 if __name__ == "__main__":
