@@ -5,3 +5,4 @@ langchain_community
 faiss_cpu
 streamlit
 pypdf
+youtube-transcript-api
