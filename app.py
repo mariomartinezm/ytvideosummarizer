@@ -1,3 +1,4 @@
+import logging
 import os
 import time
 
@@ -14,6 +15,14 @@ from langchain_nvidia_ai_endpoints import ChatNVIDIA, NVIDIAEmbeddings
 from utils import get_video_id, get_video_transcript, join_transcript
 
 load_dotenv()
+
+logging.basicConfig(
+    level=logging.INFO,
+    filename="execution.log",
+    encoding="utf-8",
+    filemode="a",
+)
+
 NVIDIA_API_KEY = os.getenv("NVIDIA_API_KEY")
 
 
@@ -36,7 +45,7 @@ def vector_embedding(url):
         transcript = get_video_transcript(video_id)
 
         text = join_transcript(transcript)
-        print(text)
+        logging.debug(f"FULL TRANSCRIPT:\n{text}")
 
         st.session_state.final_documents = get_text_chunks(text)
 
@@ -70,7 +79,7 @@ if url:
 
     start_time = time.process_time()
     response = retrieval_chain.invoke({"input": url})
-    print(f"Response time: {time.process_time() - start_time}")
+    logging.info(f"Response time: {time.process_time() - start_time}")
     st.write(response["answer"])
 
     # With a streamlit expander
