@@ -5,7 +5,7 @@ from youtube_transcript_api import YouTubeTranscriptApi
 
 def get_video_id(url: str) -> str | None:
     """Extracts a Youtube video's id from its url"""
-    regexp = r"^.*v=([a-zA-Z0-9_]+)$"
+    regexp = r"^.*v=([a-zA-Z0-9_\-]+)$"
     match = re.search(regexp, url)
 
     if match:

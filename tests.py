@@ -5,8 +5,8 @@ from utils import get_video_id, get_video_transcript, join_transcript
 
 class TestUtilityFunctions(unittest.TestCase):
     def test_get_video_id(self):
-        url = "https://www.youtube.com/watch?v=_Yn7QAS5Wpw"
-        self.assertEqual(get_video_id(url), "_Yn7QAS5Wpw")
+        url = "https://www.youtube.com/watch?v=Ir05-whjrDc"
+        self.assertEqual(get_video_id(url), "Ir05-whjrDc")
 
     def test_get_video_id_error(self):
         url = "https://notavideo.com/foo/bar"
